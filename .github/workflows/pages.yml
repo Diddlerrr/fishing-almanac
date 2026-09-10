@@ -1,0 +1,51 @@
+# Publishes the app to GitHub Pages on every push to main.
+#
+# One-time setup: repo Settings → Pages → Source → "GitHub Actions".
+# (If you would rather not use Actions at all, set Source to
+#  "Deploy from a branch: main / (root)" and delete this file — the app lives at
+#  the repo root, so that works too. It just publishes the tests and docs
+#  alongside it, which this workflow leaves out.)
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a run finish rather than cancelling it, so a deploy is never half-applied.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble the site (app files only)
+        run: |
+          mkdir -p _site
+          cp index.html app.js style.css sw.js manifest.webmanifest _site/
+          cp icon-192.png icon-512.png icon-maskable.png apple-touch-icon.png favicon.png _site/
+          touch _site/.nojekyll
+          ls -la _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,32 @@
+# The four end-to-end suites, in a real browser. Every check is a behaviour the
+# app is supposed to have; a failure here means something a person would notice.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install
+        working-directory: tests
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Syntax check the app
+        run: node --check app.js && node --check sw.js
+
+      - name: Run every suite
+        working-directory: tests
+        run: node run.js

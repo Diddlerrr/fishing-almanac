@@ -1,0 +1,17 @@
+{
+  "name": "fishing-almanac-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "End-to-end checks for the Fishing Almanac PWA.",
+  "scripts": {
+    "test": "node run.js",
+    "test:app": "node app.test.js",
+    "test:edges": "node edges.test.js",
+    "test:nearby": "node nearby.test.js",
+    "test:tools": "node tools.test.js",
+    "screenshots": "node screenshots.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  }
+}

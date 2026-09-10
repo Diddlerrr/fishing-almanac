@@ -1,0 +1,1393 @@
+.fa-root {
+  --deep: #0F2E2C;
+  --river: #1C4A45;
+  --river-light: #28615A;
+  --parchment: #EDE4D3;
+  --parchment-dim: #E1D5BD;
+  --amber: #C9803E;
+  --amber-bright: #E0A458;
+  --moss: #5C7A5E;
+  --ink: #23201B;
+  background: var(--deep);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: var(--parchment);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.fa-root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(92,122,94,0.12), transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(201,128,62,0.08), transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fa-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 96px;
+}
+
+.fa-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fa-eyebrow::before, .fa-eyebrow::after {
+  content: '';
+  height: 1px;
+  width: 28px;
+  background: var(--amber);
+  opacity: 0.5;
+}
+
+.fa-title {
+  font-family: 'Fraunces', serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: clamp(36px, 6vw, 58px);
+  line-height: 1.02;
+  margin: 14px 0 8px;
+  letter-spacing: -0.01em;
+}
+.fa-title em {
+  font-style: italic;
+  color: var(--amber);
+  font-weight: 400;
+}
+
+.fa-sub {
+  font-size: 16px;
+  color: rgba(237,228,211,0.65);
+  max-width: 560px;
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+.fa-adapt-note {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(237,228,211,0.45);
+  border: 1px dashed rgba(237,228,211,0.18);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 28px;
+  max-width: 620px;
+}
+
+.fa-searchbar {
+  display: flex;
+  gap: 10px;
+  background: var(--river);
+  border: 1px solid rgba(237,228,211,0.14);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.fa-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--parchment);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  padding: 12px 14px;
+}
+.fa-input::placeholder { color: rgba(237,228,211,0.4); }
+
+.fa-btn {
+  background: var(--amber);
+  color: #241505;
+  border: none;
+  border-radius: 7px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+.fa-btn:hover:not(:disabled) { background: #dd9450; transform: translateY(-1px); }
+.fa-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.fa-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.fa-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: rgba(237,228,211,0.55);
+  border: 1px solid rgba(237,228,211,0.18);
+  border-radius: 20px;
+  padding: 6px 12px;
+  cursor: pointer;
+  background: transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.fa-chip:hover { border-color: var(--amber); color: var(--amber); }
+
+.fa-error {
+  margin-top: 24px;
+  border: 1px solid rgba(201,128,62,0.4);
+  background: rgba(201,128,62,0.08);
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-size: 14px;
+  color: var(--amber);
+}
+
+.fa-notice {
+  margin-top: 24px;
+  border: 1px solid rgba(92,122,94,0.4);
+  background: rgba(92,122,94,0.1);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 13.5px;
+  color: #9fc0a1;
+}
+
+.fa-loading {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: rgba(237,228,211,0.55);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+}
+.fa-hook {
+  width: 34px;
+  height: 34px;
+  border: 2px solid var(--amber);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: fa-spin 0.9s linear infinite;
+}
+@keyframes fa-spin { to { transform: rotate(360deg); } }
+
+.fa-card {
+  margin-top: 40px;
+  background: var(--parchment);
+  color: var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  animation: fa-rise 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes fa-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fa-card-header {
+  background: var(--river);
+  color: var(--parchment);
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.fa-card-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 26px;
+}
+.fa-card-loc {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--amber);
+  letter-spacing: 0.05em;
+}
+
+.fa-section {
+  padding: 28px;
+  border-bottom: 1px solid rgba(35,32,27,0.1);
+}
+.fa-section:last-child { border-bottom: none; }
+
+.fa-section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fa-timeline {
+  position: relative;
+  height: 64px;
+  margin-top: 40px;
+  border-radius: 8px;
+  background: linear-gradient(90deg,
+    #1a2a3d 0%, #1a2a3d 20%,
+    #d97a3d 24%, #f2c14e 30%,
+    #bfe3f0 34%, #bfe3f0 66%,
+    #f2c14e 70%, #d97a3d 76%,
+    #1a2a3d 80%, #1a2a3d 100%);
+  overflow: visible;
+}
+.fa-peak {
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  background: rgba(35,32,27,0.18);
+  border-left: 2px solid var(--ink);
+  border-right: 2px solid var(--ink);
+  border-radius: 3px;
+}
+.fa-peak-label {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  white-space: nowrap;
+  color: var(--ink);
+  font-weight: 500;
+}
+/* The generic bar, used only when a water has no coordinates to compute from. */
+.fa-timeline-generic {
+  background: linear-gradient(90deg,
+    #16233a 0%, #16233a 20%,
+    #d97a3d 24%, #f2c14e 30%,
+    #bfe3f0 34%, #bfe3f0 66%,
+    #f2c14e 70%, #d97a3d 76%,
+    #16233a 80%, #16233a 100%);
+}
+.fa-peak-major {
+  background: rgba(201,128,62,0.42);
+  border-left: 2px solid var(--amber);
+  border-right: 2px solid var(--amber);
+}
+.fa-peak-minor {
+  top: 12px;
+  bottom: 12px;
+  background: rgba(92,122,94,0.5);
+  border-left: 1px solid var(--moss);
+  border-right: 1px solid var(--moss);
+}
+.fa-now-marker {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  width: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+}
+.fa-now-marker span {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(35,32,27,0.65);
+}
+.fa-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 22px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  color: rgba(35,32,27,0.55);
+}
+.fa-legend span { display: flex; align-items: center; gap: 6px; }
+.fa-swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.fa-swatch-major { background: rgba(201,128,62,0.42); border: 1px solid var(--amber); }
+.fa-swatch-minor { background: rgba(92,122,94,0.5); border: 1px solid var(--moss); }
+
+.fa-rating-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(35,32,27,0.15);
+}
+.fa-rating-stars { display: flex; gap: 4px; flex-shrink: 0; padding-top: 2px; }
+.fa-star { color: rgba(35,32,27,0.16); font-size: 13px; line-height: 1; }
+.fa-star.on { color: var(--amber); }
+.fa-rating-label { font-family: 'Fraunces', serif; font-weight: 600; font-size: 15px; }
+.fa-rating-why { font-size: 13px; line-height: 1.45; color: rgba(35,32,27,0.7); margin-top: 2px; }
+
+.fa-window-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+.fa-window {
+  border: 1px solid rgba(92,122,94,0.22);
+  border-left: 3px solid var(--moss);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: rgba(92,122,94,0.05);
+}
+.fa-window.major { border-left-color: var(--amber); background: rgba(201,128,62,0.07); }
+.fa-window.live { box-shadow: 0 0 0 2px rgba(201,128,62,0.35); }
+.fa-window.passed { opacity: 0.5; }
+.fa-window-kind {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--moss);
+}
+.fa-window.major .fa-window-kind { color: #a95722; }
+.fa-window-time { font-family: 'Fraunces', serif; font-weight: 600; font-size: 15px; margin: 3px 0 1px; font-variant-numeric: tabular-nums; }
+.fa-window-label { font-size: 11.5px; color: rgba(35,32,27,0.6); }
+
+.fa-suntimes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: rgba(35,32,27,0.72);
+  font-variant-numeric: tabular-nums;
+}
+.fa-suntimes strong {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--moss);
+  margin-right: 6px;
+}
+.fa-fineprint {
+  margin-top: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: rgba(35,32,27,0.42);
+}
+
+.fa-timeline-marks {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: rgba(35,32,27,0.45);
+  margin-top: 8px;
+}
+
+.fa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.fa-fish-card, .fa-lure-card {
+  background: rgba(92,122,94,0.06);
+  border: 1px solid rgba(92,122,94,0.2);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.fa-fish-name, .fa-lure-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.fa-fish-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+.fa-fish-desc, .fa-lure-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(35,32,27,0.8);
+}
+.fa-fish-structure {
+  font-size: 12px;
+  color: var(--moss);
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(92,122,94,0.25);
+}
+.fa-fish-structure strong { font-weight: 600; }
+
+.fa-tech-list { display: flex; flex-direction: column; gap: 14px; }
+.fa-tech-item { display: flex; gap: 14px; }
+.fa-tech-mark {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--moss);
+  font-size: 20px;
+  line-height: 1.4;
+  min-width: 22px;
+}
+.fa-tech-name {
+  font-weight: 600;
+  font-size: 14.5px;
+  margin-bottom: 2px;
+}
+.fa-tech-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(35,32,27,0.78);
+}
+
+.fa-seasonal-note {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(35,32,27,0.78);
+  background: rgba(201,128,62,0.08);
+  border-left: 3px solid var(--amber);
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin-top: 16px;
+}
+
+.fa-empty {
+  margin-top: 60px;
+  text-align: center;
+  color: rgba(237,228,211,0.35);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+}
+
+.fa-not-found {
+  padding: 40px 28px;
+  text-align: center;
+}
+.fa-not-found-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.fa-not-found-desc {
+  font-size: 14px;
+  color: rgba(35,32,27,0.65);
+  line-height: 1.55;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.fa-clear-btn {
+  background: transparent;
+  border: none;
+  color: rgba(237,228,211,0.85);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 4px 0;
+  opacity: 0.7;
+}
+.fa-clear-btn:hover { opacity: 1; text-decoration: underline; }
+
+.fa-favorites {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.fa-fav-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--parchment);
+  border: 1px solid rgba(201,128,62,0.4);
+  background: rgba(201,128,62,0.1);
+  border-radius: 20px;
+  padding: 6px 8px 6px 14px;
+  cursor: pointer;
+}
+.fa-fav-chip:hover { border-color: var(--amber); }
+.fa-fav-remove {
+  background: rgba(237,228,211,0.12);
+  border: none;
+  color: rgba(237,228,211,0.6);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+}
+.fa-fav-remove:hover { color: var(--amber); }
+
+.fa-star-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: rgba(237,228,211,0.4);
+  display: flex;
+  align-items: center;
+}
+.fa-star-btn.active { color: var(--amber); }
+.fa-star-btn svg { width: 20px; height: 20px; }
+
+.fa-conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
+}
+.fa-cond-item {
+  text-align: center;
+  background: rgba(92,122,94,0.06);
+  border: 1px solid rgba(92,122,94,0.18);
+  border-radius: 8px;
+  padding: 14px 8px;
+}
+.fa-cond-value {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 22px;
+}
+.fa-cond-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(35,32,27,0.5);
+  margin-top: 2px;
+}
+
+.fa-moon-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(35,32,27,0.15);
+}
+.fa-moon-icon { font-size: 32px; line-height: 1; }
+.fa-moon-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+.fa-moon-note {
+  font-size: 13px;
+  color: rgba(35,32,27,0.7);
+  line-height: 1.4;
+  max-width: 420px;
+}
+.fa-moon-illum {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: rgba(35,32,27,0.5);
+}
+
+.fa-gear-list { display: flex; flex-direction: column; gap: 10px; }
+.fa-gear-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  background: rgba(92,122,94,0.06);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+.fa-gear-name { font-weight: 600; font-size: 13.5px; }
+.fa-gear-note { font-size: 12.5px; color: rgba(35,32,27,0.6); text-align: right; }
+
+.fa-regs-note {
+  font-size: 12px;
+  color: rgba(35,32,27,0.45);
+  padding: 16px 28px 28px;
+  font-family: 'IBM Plex Mono', monospace;
+  line-height: 1.5;
+}
+
+.fa-topbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.fa-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(237,228,211,0.06);
+  border: 1px solid rgba(237,228,211,0.16);
+  border-radius: 20px;
+  padding: 6px 14px 6px 6px;
+  cursor: pointer;
+  color: var(--parchment);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+}
+.fa-profile-btn:hover { border-color: var(--amber); }
+.fa-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--moss);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--parchment);
+  object-fit: cover;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.fa-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.fa-trophy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid rgba(237,228,211,0.16);
+  border-radius: 20px;
+  padding: 6px 14px;
+  cursor: pointer;
+  color: var(--parchment);
+  font-size: 13px;
+}
+.fa-trophy-btn:hover { border-color: var(--amber); }
+
+.fa-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,46,44,0.75);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  z-index: 50;
+  overflow-y: auto;
+}
+.fa-modal {
+  background: var(--parchment);
+  color: var(--ink);
+  border-radius: 14px;
+  max-width: 560px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+.fa-modal-header {
+  background: var(--river);
+  color: var(--parchment);
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fa-modal-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 19px;
+}
+.fa-modal-close {
+  background: transparent;
+  border: none;
+  color: rgba(237,228,211,0.6);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.fa-modal-close:hover { color: var(--parchment); }
+.fa-modal-body { padding: 24px; }
+
+.fa-field { margin-bottom: 16px; }
+.fa-field label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--moss);
+  margin-bottom: 6px;
+}
+.fa-field input, .fa-field select, .fa-field textarea {
+  width: 100%;
+  border: 1px solid rgba(35,32,27,0.2);
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background: #fff;
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+.fa-avatar-picker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.fa-avatar-big {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--moss);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--parchment);
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.fa-avatar-big img { width: 100%; height: 100%; object-fit: cover; }
+.fa-upload-btn {
+  border: 1px dashed rgba(35,32,27,0.3);
+  background: transparent;
+  border-radius: 7px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--ink);
+}
+.fa-upload-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+.fa-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+.fa-btn-secondary {
+  background: transparent;
+  border: 1px solid rgba(35,32,27,0.2);
+  color: var(--ink);
+  border-radius: 7px;
+  padding: 10px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.fa-catch-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--river);
+  color: var(--parchment);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+}
+.fa-catch-toggle:hover { background: var(--river-light); }
+
+.fa-catch-form { display: flex; flex-direction: column; gap: 14px; }
+.fa-catch-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fa-photo-drop {
+  border: 2px dashed rgba(35,32,27,0.25);
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px;
+  color: rgba(35,32,27,0.55);
+}
+.fa-photo-drop:hover { border-color: var(--amber); color: var(--amber); }
+.fa-photo-preview {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+.fa-catch-submit-row { display: flex; align-items: center; gap: 12px; }
+
+.fa-record-badge {
+  background: var(--amber);
+  color: #241505;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fa-leaderboard-section {
+  margin-top: 44px;
+}
+.fa-leaderboard-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.fa-leaderboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.fa-lb-card {
+  background: var(--parchment);
+  border-radius: 12px;
+  overflow: hidden;
+  color: var(--ink);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.fa-lb-photo {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+  background: rgba(92,122,94,0.15);
+}
+.fa-lb-body { padding: 12px 14px; }
+.fa-lb-species {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--moss);
+}
+.fa-lb-measure {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 2px 0;
+}
+.fa-lb-angler {
+  font-size: 12.5px;
+  color: rgba(35,32,27,0.7);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.fa-lb-water {
+  font-size: 11px;
+  color: rgba(35,32,27,0.45);
+  margin-top: 4px;
+}
+.fa-lb-empty {
+  color: rgba(237,228,211,0.4);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+}
+
+.fa-trophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+.fa-trophy-card {
+  border: 1px solid rgba(35,32,27,0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.fa-trophy-photo {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+.fa-trophy-body { padding: 10px 12px; }
+.fa-trophy-species { font-weight: 600; font-size: 13.5px; }
+.fa-trophy-meta {
+  font-size: 12px;
+  color: rgba(35,32,27,0.55);
+  margin-top: 2px;
+}
+.fa-trophy-empty {
+  color: rgba(35,32,27,0.45);
+  font-size: 13.5px;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.fa-hotspot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+.fa-hotspot-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(92,122,94,0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.fa-hotspot-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 5px;
+  padding: 3px 7px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #241505;
+  background: var(--amber);
+}
+.fa-hotspot-tag.shore { background: var(--moss); color: var(--parchment); }
+.fa-hotspot-name { font-weight: 600; font-size: 13.5px; }
+.fa-hotspot-tip { font-size: 12.5px; color: rgba(35,32,27,0.65); margin-top: 2px; }
+
+.fa-quicktips-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fa-quicktips-list li {
+  font-size: 13.5px;
+  line-height: 1.5;
+  padding-left: 22px;
+  position: relative;
+  color: rgba(35,32,27,0.8);
+}
+.fa-quicktips-list li::before {
+  content: '🎣';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 12px;
+}
+
+.fa-insight { background:rgba(201,128,62,.09); border-left:3px solid var(--amber); padding:13px 15px; border-radius:0 8px 8px 0; font-size:13px; line-height:1.5; margin-top:12px; }
+.fa-private-note { display:flex; gap:8px; padding:10px 12px; background:rgba(92,122,94,.08); border-radius:7px; font-size:12px; color:rgba(35,32,27,.7); margin-bottom:14px; }
+.fa-nav { position:sticky; top:8px; z-index:20; display:grid; grid-template-columns:repeat(5,1fr); gap:5px; background:rgba(15,46,44,.92); backdrop-filter:blur(12px); border:1px solid rgba(237,228,211,.12); border-radius:12px; padding:5px; margin:14px 0 28px; box-shadow:0 8px 30px rgba(0,0,0,.18); }
+.fa-nav button { border:0; border-radius:8px; color:rgba(237,228,211,.6); background:transparent; padding:10px 5px; font-size:11px; cursor:pointer; }
+.fa-nav button.active { color:#241505; background:var(--amber); font-weight:700; }
+.fa-page-title { font:600 clamp(28px,5vw,42px)/1.05 'Fraunces',serif; margin:8px 0; }
+.fa-page-copy { color:rgba(237,228,211,.62); font-size:14px; line-height:1.5; margin-bottom:22px; }
+.fa-panel { background:var(--parchment); color:var(--ink); border-radius:14px; padding:22px; box-shadow:0 16px 45px rgba(0,0,0,.24); margin-bottom:16px; }
+.fa-trip-hero { background:linear-gradient(145deg,#1c4a45,#102f2d); color:var(--parchment); }
+.fa-trip-clock { font:700 44px/1 'Fraunces',serif; margin:12px 0 5px; }
+.fa-stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:16px 0; }
+.fa-stat { background:rgba(237,228,211,.08); border-radius:8px; padding:11px; }
+.fa-stat strong { display:block; font:600 20px 'Fraunces',serif; }
+.fa-stat span { font:9px 'IBM Plex Mono',monospace; color:rgba(237,228,211,.55); text-transform:uppercase; }
+.fa-command { background:rgba(224,164,88,.13); border-left:3px solid var(--amber); padding:14px; border-radius:0 8px 8px 0; line-height:1.5; margin:16px 0; }
+.fa-action-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:9px; }
+/* These sit on the dark trip panel but have a white face, so they set their own
+   text color instead of inheriting the panel's parchment. */
+.fa-action { border:1px solid rgba(35,32,27,.15); background:#fff; color:var(--ink); border-radius:9px; padding:13px; cursor:pointer; text-align:left; }
+.fa-action:disabled { opacity: .45; cursor: not-allowed; }
+.fa-action strong { display:block; font-size:13px; }
+.fa-action span { font-size:11px; color:rgba(35,32,27,.5); }
+.fa-list { display:flex; flex-direction:column; gap:9px; }
+.fa-list-row { display:flex; gap:10px; align-items:center; justify-content:space-between; border:1px solid rgba(35,32,27,.12); border-radius:9px; padding:12px; }
+.fa-list-main { font-weight:600; font-size:13px; }
+.fa-list-sub { color:rgba(35,32,27,.55); font-size:11px; margin-top:3px; }
+.fa-confidence { display:inline-block; font:700 9px 'IBM Plex Mono',monospace; text-transform:uppercase; color:var(--moss); background:rgba(92,122,94,.1); border-radius:5px; padding:4px 6px; }
+.fa-danger-link { border:0; background:transparent; color:#a95722; cursor:pointer; font-size:12px; }
+.fa-empty-panel { text-align:center; padding:28px 10px; color:rgba(35,32,27,.5); font-size:13px; }
+.fa-primary-row { display:flex; gap:9px; flex-wrap:wrap; margin-top:14px; }
+.fa-toggle-btn { border:1px solid rgba(237,228,211,.25); background:rgba(237,228,211,.07); color:var(--parchment); border-radius:20px; padding:7px 11px; cursor:pointer; font-size:11px; white-space:nowrap; }
+.fa-toggle-btn.active { color:#241505; background:var(--amber); border-color:var(--amber); }
+/* Same control, sitting on a parchment panel instead of the dark chrome. */
+.fa-toggle-btn.on-light { color:var(--river); border-color:rgba(28,74,69,.28); background:rgba(28,74,69,.05); }
+.fa-toggle-btn.on-light:hover { border-color:var(--moss); }
+.fa-toggle-btn.on-light.active { color:#241505; background:var(--amber); border-color:var(--amber); }
+.fa-note-row { display:flex; align-items:center; gap:10px; margin-top:8px; flex-wrap:wrap; }
+.fa-note-count { font:10px 'IBM Plex Mono',monospace; color:rgba(237,228,211,.5); }
+.fa-loading-elapsed { font-family:'IBM Plex Mono',monospace; font-size:11px; color:rgba(237,228,211,.38); min-height:14px; }
+.fa-notice-inline { margin-top:0; margin-bottom:14px; }
+.fa-note-input { width:100%; border:1px solid rgba(35,32,27,.2); border-radius:8px; padding:11px; min-height:72px; resize:vertical; font-family:'Inter',sans-serif; font-size:13.5px; box-sizing:border-box; background:#fff; color:var(--ink); }
+.fa-note-input::placeholder { color:rgba(35,32,27,.45); }
+.fa-summary-hero { text-align:center; padding:8px 0 18px; }
+.fa-summary-number { font:700 46px/1 'Fraunces',serif; color:var(--river); }
+.fa-summary-label { font:10px 'IBM Plex Mono',monospace; text-transform:uppercase; color:rgba(35,32,27,.5); }
+/* Trip history entries expand to show what was recorded on the water. */
+.fa-trip-entry { border:1px solid rgba(35,32,27,.12); border-radius:9px; overflow:hidden; }
+.fa-trip-entry.open { border-color:rgba(92,122,94,.35); }
+.fa-trip-head {
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:transparent; border:0; padding:12px; cursor:pointer; text-align:left; color:var(--ink); font-family:'Inter',sans-serif;
+}
+.fa-trip-head:hover { background:rgba(92,122,94,.05); }
+.fa-trip-head-main { display:flex; flex-direction:column; }
+.fa-trip-head-right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.fa-caret { font-size:9px; color:rgba(35,32,27,.4); }
+.fa-trip-detail { padding:0 12px 14px; border-top:1px dashed rgba(35,32,27,.14); }
+.fa-trip-meta { font:10px 'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.06em; color:var(--moss); padding:10px 0 4px; }
+.fa-trip-empty { font-size:12.5px; color:rgba(35,32,27,.5); padding:10px 0; }
+.fa-timeline-list { list-style:none; margin:6px 0 0; padding:0; display:flex; flex-direction:column; }
+.fa-event { display:flex; gap:12px; padding:7px 0 7px 12px; border-left:2px solid rgba(35,32,27,.12); font-size:13px; line-height:1.45; }
+.fa-event.catch { border-left-color:var(--amber); }
+.fa-event.miss { border-left-color:rgba(169,87,34,.4); }
+.fa-event.note { border-left-color:var(--moss); background:rgba(92,122,94,.05); }
+.fa-event.lure { border-left-color:rgba(28,74,69,.35); }
+.fa-event-time { font:11px 'IBM Plex Mono',monospace; color:rgba(35,32,27,.45); flex-shrink:0; min-width:64px; font-variant-numeric:tabular-nums; }
+.fa-event-text { color:rgba(35,32,27,.82); }
+.fa-event.note .fa-event-text { font-style:italic; }
+
+.fa-spot-card { border-left:3px solid var(--moss); }
+.fa-fresh { color:var(--moss); font:10px 'IBM Plex Mono',monospace; }
+
+/* Keyboard users get the same affordances as pointer users. */
+.fa-root :focus-visible {
+  outline: 2px solid var(--amber-bright);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.fa-panel :focus-visible, .fa-card :focus-visible, .fa-modal :focus-visible {
+  outline-color: var(--river);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-card { animation: none; }
+  .fa-hook { animation-duration: 2.4s; }
+  .fa-btn:hover:not(:disabled) { transform: none; }
+  .fa-root * { transition-duration: 0.01ms !important; }
+}
+
+@media (max-width: 560px) {
+  .fa-searchbar { flex-wrap: wrap; }
+  .fa-input { flex-basis: 100%; }
+  /* Scoped to the search bar: this used to hit every primary button in the app,
+     which made them stretch and reflow oddly wherever two buttons sat together. */
+  .fa-searchbar .fa-btn { flex: 1; }
+  .fa-catch-row { grid-template-columns: 1fr; }
+  .fa-nav button { font-size: 9px; padding: 9px 2px; }
+  .fa-panel { padding: 17px; }
+  .fa-action-grid { grid-template-columns: 1fr; }
+}
+
+/* Setting a water's coordinates — the input that makes sun and moon times exact. */
+.fa-coord-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:16px; padding-top:14px; border-top:1px dashed rgba(35,32,27,.14); }
+.fa-coord-prompt { font-size:12.5px; line-height:1.5; color:rgba(35,32,27,.62); flex:1 1 240px; }
+.fa-coord-editor { margin-top:16px; padding-top:16px; border-top:1px dashed rgba(35,32,27,.14); }
+
+/* GPS "Near me" control in the search bar. */
+.fa-locate-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: transparent; border: none; color: rgba(237,228,211,0.55);
+  padding: 12px 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 14px;
+  white-space: nowrap; flex-shrink: 0; transition: color 0.15s ease;
+}
+.fa-locate-btn:hover:not(:disabled) { color: var(--amber); }
+.fa-locate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.fa-locate-icon { width: 16px; height: 16px; flex-shrink: 0; }
+.fa-locate-hint {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 1.5;
+  color: rgba(237,228,211,0.4); margin-top: 12px; max-width: 620px;
+}
+
+/* Maps handoff inside the planner. */
+.fa-map-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; }
+.fa-map-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--river);
+  text-decoration: none; border: 1px solid rgba(28,74,69,0.3); border-radius: 7px;
+  padding: 8px 14px; background: rgba(28,74,69,0.05); transition: border-color 0.15s ease, background 0.15s ease;
+}
+.fa-map-link:hover { border-color: var(--moss); background: rgba(28,74,69,0.1); }
+.fa-map-acc { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(35,32,27,0.5); }
+
+@media (max-width: 560px) {
+  /* These reorder the SEARCH BAR only when it wraps. Unscoped, the order:3 hit
+     every primary button in the app and pushed "Save" below "Cancel". */
+  .fa-searchbar .fa-locate-btn { order: 2; padding: 10px 8px; }
+  .fa-searchbar .fa-input { order: 1; }
+  .fa-searchbar .fa-btn { order: 3; }
+}
+
+/* Read-the-water schematic + its legend. The report card is always parchment,
+   so these colors are chosen against that ground in both app themes. */
+.fa-watermap { margin: 0; }
+.fa-watermap-svg {
+  border: 1px solid rgba(35,32,27,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e7dcc6;
+}
+.fa-watermap figcaption { margin-top: 10px; }
+.fa-spot-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px 18px;
+  margin-top: 16px;
+}
+.fa-spot-item { display: flex; gap: 10px; align-items: flex-start; }
+.fa-spot-num {
+  flex-shrink: 0;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--amber); color: #241505;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.fa-spot-name { font-weight: 600; font-size: 13.5px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.fa-spot-why { font-size: 12.5px; line-height: 1.5; color: rgba(35,32,27,0.7); margin-top: 2px; }
+.fa-spot-access {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em;
+  border-radius: 4px; padding: 2px 6px; color: #241505; background: var(--amber-bright);
+}
+.fa-spot-access.shore { background: var(--moss); color: var(--parchment); }
+.fa-spot-access.boat { background: #3f7d8c; color: #fff; }
+
+/* Species selector + tier styling for the read-the-water diagram. */
+.fa-species-select { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+.fa-species-chip {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;
+  border: 1px solid rgba(28,74,69,0.28); background: rgba(28,74,69,0.05);
+  color: var(--river); border-radius: 20px; padding: 6px 13px; cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.fa-species-chip:hover { border-color: var(--moss); }
+.fa-species-chip.active { background: var(--amber); border-color: var(--amber); color: #241505; font-weight: 600; }
+.fa-tier-key {
+  display: flex; gap: 16px; margin-top: 14px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: rgba(35,32,27,0.55);
+}
+.fa-tier-key span { display: flex; align-items: center; gap: 6px; }
+.fa-tier-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; border: 1.5px solid #241505; }
+.fa-spot-item.prime .fa-spot-name { font-weight: 700; }
+.fa-spot-tier {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em;
+  border-radius: 4px; padding: 2px 6px; color: #241505;
+}
+.fa-spot-tier.tier3 { background: var(--amber); }
+.fa-spot-tier.tier2 { background: rgba(92,122,94,0.28); color: var(--ink); }
+.fa-spot-tier.tier1 { background: rgba(35,32,27,0.1); color: rgba(35,32,27,0.6); }
+
+/* Units segmented toggle in the profile modal. */
+.fa-unit-toggle { display: flex; gap: 8px; }
+.fa-unit-opt {
+  flex: 1; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  border: 1px solid rgba(35,32,27,0.2); background: #fff; color: var(--ink);
+  border-radius: 7px; padding: 10px 8px; cursor: pointer; text-align: center;
+}
+.fa-unit-opt.active { background: var(--river); color: var(--parchment); border-color: var(--river); }
+
+/* Lake / River water-type toggle above the read-the-water diagram. */
+.fa-watertype { display: inline-flex; gap: 0; margin-bottom: 14px; border: 1px solid rgba(28,74,69,0.28); border-radius: 8px; overflow: hidden; }
+.fa-watertype button {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;
+  border: 0; background: transparent; color: var(--river); padding: 8px 18px; cursor: pointer;
+}
+.fa-watertype button + button { border-left: 1px solid rgba(28,74,69,0.28); }
+.fa-watertype button.active { background: var(--river); color: var(--parchment); font-weight: 600; }
+
+/* ---- Real satellite map ---- */
+.fa-mapmode { margin-bottom: 12px; }
+.fa-satmap { width: 100%; height: 380px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(35,32,27,0.18); background: #16233a; }
+.fa-satmap-tools { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.fa-maptool {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  border: 1.5px solid rgba(28,74,69,0.3); background: #fff; color: var(--ink);
+  border-radius: 20px; padding: 7px 12px; cursor: pointer;
+}
+.fa-maptool.active { color: #241505; font-weight: 600; }
+.fa-maptool-gps { border-color: var(--river); color: var(--river); }
+.fa-map-blocked { padding: 40px 20px; text-align: center; color: rgba(237,228,211,0.75); font-size: 13.5px; line-height: 1.6; }
+.fa-satmap .fa-mappin { width: 22px; height: 22px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2px solid #241505; box-shadow: 0 1px 3px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; }
+.fa-satmap .fa-mappin.habitat { background: #C9803E; }
+.fa-satmap .fa-mappin.catch { background: #e0a458; }
+.fa-satmap .fa-mappin.catch::after { content: '★'; transform: rotate(45deg); font-size: 11px; color: #241505; }
+.fa-satmap .fa-mappin.you { background: #4aa3ff; border-color: #fff; border-radius: 50%; transform: none; }
+.fa-mappop-del { font-family: 'IBM Plex Mono', monospace; font-size: 11px; border: 1px solid #a95722; color: #a95722; background: #fff; border-radius: 5px; padding: 3px 8px; cursor: pointer; margin-top: 4px; }
+/* Leaflet controls tuned to the palette */
+.leaflet-container { font-family: 'Inter', sans-serif; }
+.leaflet-bar a { color: var(--ink) !important; }
+
+/* ---- Live weather + hourly bite forecast ---- */
+.fa-weather-loading { font-family:'IBM Plex Mono',monospace; font-size:12px; color:rgba(35,32,27,0.5); padding:12px 0; }
+.fa-trend { margin-top:14px; font-size:13px; line-height:1.5; border-left:3px solid var(--moss); padding:10px 14px; border-radius:0 8px 8px 0; background:rgba(92,122,94,0.08); color:rgba(35,32,27,0.8); }
+.fa-trend strong { font-weight:600; }
+.fa-trend-falling { border-left-color:var(--amber); background:rgba(201,128,62,0.09); }
+.fa-trend-rising { border-left-color:#a95722; background:rgba(169,87,34,0.08); }
+.fa-forecast { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(78px,1fr); gap:8px; overflow-x:auto; padding-bottom:6px; }
+.fa-hour { border:1px solid rgba(92,122,94,0.2); border-radius:9px; padding:10px 8px; background:rgba(92,122,94,0.06); text-align:center; }
+.fa-hour.hot { border-color:rgba(201,128,62,0.4); background:rgba(201,128,62,0.07); }
+.fa-hour-time { font:500 10px 'IBM Plex Mono',monospace; color:rgba(35,32,27,0.55); text-transform:uppercase; }
+.fa-hour-score { font:700 26px/1 'Fraunces',serif; margin:6px 0 3px; color:var(--river); }
+.fa-hour-score.hot { color:#a95722; }
+.fa-hour-label { font-size:11px; font-weight:600; }
+.fa-scorebar { height:4px; background:rgba(35,32,27,0.1); border-radius:4px; margin-top:8px; overflow:hidden; }
+.fa-scorebar span { display:block; height:100%; background:var(--moss); border-radius:4px; }
+.fa-hour.hot .fa-scorebar span { background:var(--amber); }
+.fa-trophy-cond { font:10px 'IBM Plex Mono',monospace; color:var(--moss); margin-top:4px; text-transform:lowercase; }
+
+/* ============================== THE GURU ==============================
+   The guide's calls. Always on a parchment panel, so the literals below read
+   the same inside the report card and on the dashboard. */
+.fa-guru { display: flex; flex-direction: column; gap: 14px; }
+.fa-guru-head { display: flex; align-items: center; gap: 15px; }
+.fa-guru-score {
+  flex-shrink: 0; width: 68px; height: 68px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border: 3px solid var(--moss); background: rgba(92,122,94,0.1);
+}
+.fa-guru-score strong { font: 700 24px/1 'Fraunces', serif; color: var(--ink); font-variant-numeric: tabular-nums; }
+.fa-guru-score span { font: 8px 'IBM Plex Mono', monospace; letter-spacing: .09em; text-transform: uppercase; color: rgba(35,32,27,.55); margin-top: 3px; }
+.fa-guru-score[data-tier="prime"] { border-color: #2f7d4f; background: rgba(47,125,79,.13); }
+.fa-guru-score[data-tier="good"] { border-color: var(--amber); background: rgba(201,128,62,.13); }
+.fa-guru-score[data-tier="fair"] { border-color: var(--moss); background: rgba(92,122,94,.1); }
+.fa-guru-score[data-tier="slow"] { border-color: rgba(35,32,27,.28); background: rgba(35,32,27,.05); }
+.fa-guru-verdictwrap { min-width: 0; }
+.fa-guru-verdict { font: 600 17px/1.15 'Fraunces', serif; color: var(--ink); }
+.fa-guru-headline { font-size: 13px; line-height: 1.45; color: rgba(35,32,27,.68); margin-top: 4px; }
+.fa-guru-calls { display: flex; flex-direction: column; gap: 11px; }
+.fa-guru-call {
+  border: 1px solid rgba(35,32,27,.12); border-left: 3px solid var(--amber);
+  border-radius: 0 9px 9px 0; padding: 12px 14px; background: rgba(255,255,255,.42);
+}
+.fa-guru-call.safety { border-left-color: #a02b1d; background: rgba(160,43,29,.07); }
+.fa-guru-tag {
+  font: 700 9px 'IBM Plex Mono', monospace; letter-spacing: .13em; text-transform: uppercase;
+  color: #a95722; margin-bottom: 5px;
+}
+.fa-guru-call.safety .fa-guru-tag { color: #a02b1d; }
+.fa-guru-title { font: 600 14px/1.3 'Fraunces', serif; color: var(--ink); }
+.fa-guru-body { font-size: 13px; line-height: 1.55; color: rgba(35,32,27,.74); margin-top: 5px; }
+
+/* ============================== HOME DASHBOARD ============================== */
+.fa-dash-hero { background: linear-gradient(145deg, #1c4a45, #102f2d); color: var(--parchment); }
+.fa-dash-water { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.fa-dash-name { font: 600 22px/1.1 'Fraunces', serif; }
+.fa-dash-loc { font-size: 12px; color: rgba(237,228,211,.55); margin-top: 3px; }
+.fa-dash-window {
+  margin: 16px 0 14px; padding: 15px; border-radius: 10px;
+  background: rgba(237,228,211,.07); border-left: 3px solid var(--amber);
+}
+.fa-dash-wkicker { font: 700 9px 'IBM Plex Mono', monospace; letter-spacing: .13em; text-transform: uppercase; color: var(--amber-bright); }
+.fa-dash-wtitle { font: 700 30px/1.05 'Fraunces', serif; margin: 5px 0 4px; font-variant-numeric: tabular-nums; }
+.fa-dash-wtitle.live { color: var(--amber-bright); }
+.fa-dash-wsub { font-size: 12.5px; line-height: 1.5; color: rgba(237,228,211,.7); }
+.fa-dash-cells { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.fa-dash-cell { background: rgba(237,228,211,.07); border-radius: 8px; padding: 11px 8px; text-align: center; }
+.fa-dash-cell strong { display: block; font: 600 17px/1.1 'Fraunces', serif; font-variant-numeric: tabular-nums; }
+.fa-dash-cell strong em { font-style: normal; font-size: 11px; color: var(--amber-bright); }
+.fa-dash-cell span { display: block; font: 9px 'IBM Plex Mono', monospace; text-transform: uppercase; color: rgba(237,228,211,.5); margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fa-dash-nocond { font-size: 12.5px; line-height: 1.5; color: rgba(237,228,211,.6); }
+.fa-dash-hero .fa-weather-loading { color: rgba(237,228,211,.6); }
+
+/* Pinned photos — a picture filed at the coordinates it was taken on. */
+.fa-pinstrip { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+.fa-pinshot {
+  flex: 0 0 122px; border: 1px solid rgba(35,32,27,.14); border-radius: 10px;
+  background: rgba(255,255,255,.5); padding: 0 0 8px; cursor: pointer; overflow: hidden; text-align: left;
+}
+.fa-pinshot img { display: block; width: 100%; height: 84px; object-fit: cover; }
+.fa-pinshot-label { display: block; font-weight: 600; font-size: 11.5px; color: var(--ink); padding: 7px 8px 0; }
+.fa-pinshot-sub { display: block; font-size: 10.5px; color: rgba(35,32,27,.55); padding: 2px 8px 0; }
+
+/* Pin popups on the satellite map. */
+.fa-pinpop-title { font: 600 13.5px 'Fraunces', serif; color: #23201b; margin-bottom: 6px; }
+.fa-pinpop-photo { display: block; width: 100%; border-radius: 7px; margin-bottom: 7px; }
+.fa-pinpop-note {
+  width: 100%; box-sizing: border-box; border: 1px solid rgba(35,32,27,.22); border-radius: 6px;
+  padding: 6px 7px; font: 400 12px 'Inter', sans-serif; color: #23201b; background: #fff; margin-bottom: 7px;
+}
+.fa-pinpop-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.fa-pinpop-btn {
+  border: 1px solid rgba(35,32,27,.22); background: #fff; color: #23201b;
+  border-radius: 6px; padding: 5px 8px; font-size: 11px; cursor: pointer;
+}
+.fa-pinpop-btn.danger { color: #a02b1d; border-color: rgba(160,43,29,.35); }
+.fa-pinpop-coords { font: 10px 'IBM Plex Mono', monospace; color: rgba(35,32,27,.5); margin-top: 7px; }
+.fa-satmap .fa-mappin.has-photo { background: #e0a458; }
+.fa-satmap .fa-mappin.has-photo::after { content: '📷'; transform: rotate(45deg); font-size: 10px; line-height: 1; }
+
+/* A chip sitting on a parchment panel rather than the dark chrome. */
+.fa-chip.on-light { border-color: rgba(35,32,27,.2); color: rgba(35,32,27,.75); background: rgba(255,255,255,.5); }
+.fa-chip.on-light:hover { border-color: var(--amber); color: #a95722; }
+
+/* Six nav slots now that Home leads. */
+.fa-nav { grid-template-columns: repeat(6, 1fr); }
+@media (max-width: 560px) {
+  .fa-nav button { font-size: 9px; padding: 9px 1px; letter-spacing: -0.01em; }
+  .fa-guru-score { width: 58px; height: 58px; }
+  .fa-guru-score strong { font-size: 20px; }
+  .fa-dash-cells { grid-template-columns: repeat(2, 1fr); }
+  .fa-dash-wtitle { font-size: 26px; }
+}
+.fa-examples-label { font: 10px 'IBM Plex Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: rgba(237,228,211,.4); margin: 18px 0 -8px; }
+
+/* ---- Water temperature: the number the whole season read hangs on ---- */
+.fa-watertemp {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  margin-top: 14px; padding: 12px 14px; border-radius: 9px;
+  background: rgba(63,125,140,.09); border-left: 3px solid #3f7d8c;
+  font-size: 13px; color: rgba(35,32,27,.75);
+}
+.fa-watertemp-value { font: 600 17px 'Fraunces', serif; color: var(--ink); font-variant-numeric: tabular-nums; }
+.fa-watertemp-src { font-size: 12px; color: rgba(35,32,27,.55); }
+.fa-watertemp-src.measured { color: #2f6d4f; font-weight: 600; }
+.fa-dash-cell.wide { grid-column: 1 / -1; }
+
+/* ---- The week ahead ---- */
+.fa-week-verdict {
+  font-size: 13.5px; line-height: 1.5; color: rgba(35,32,27,.78);
+  background: rgba(201,128,62,.1); border-left: 3px solid var(--amber);
+  border-radius: 0 8px 8px 0; padding: 11px 13px; margin-bottom: 14px;
+}
+.fa-week-verdict strong { font-family: 'Fraunces', serif; font-size: 15px; color: var(--ink); }
+.fa-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.fa-weekday {
+  border: 1px solid rgba(35,32,27,.12); border-radius: 8px; padding: 8px 3px;
+  text-align: center; background: rgba(255,255,255,.4); min-width: 0;
+}
+.fa-weekday.best { border-color: var(--amber); background: rgba(201,128,62,.12); box-shadow: 0 0 0 1px var(--amber); }
+.fa-weekday-name { font: 700 9px 'IBM Plex Mono', monospace; letter-spacing: .06em; text-transform: uppercase; color: rgba(35,32,27,.55); }
+.fa-weekday-score {
+  font: 700 18px/1.1 'Fraunces', serif; margin: 5px 0 3px; font-variant-numeric: tabular-nums; color: rgba(35,32,27,.45);
+}
+.fa-weekday-score[data-tier="prime"] { color: #2f7d4f; }
+.fa-weekday-score[data-tier="good"] { color: #a95722; }
+.fa-weekday-score[data-tier="fair"] { color: var(--moss); }
+.fa-weekday-dots { display: flex; justify-content: center; gap: 1px; }
+.fa-weekday-dots .fa-star { font-size: 6px; }
+.fa-weekday-wx { margin-top: 5px; font-size: 10px; color: rgba(35,32,27,.6); font-variant-numeric: tabular-nums; }
+.fa-weekday-wx span { display: block; font-size: 8.5px; color: rgba(35,32,27,.45); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.fa-dash-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+@media (max-width: 560px) {
+  .fa-week { gap: 3px; }
+  .fa-weekday { padding: 7px 1px; border-radius: 6px; }
+  .fa-weekday-score { font-size: 15px; }
+  .fa-weekday-wx span { font-size: 8px; }
+  .fa-dash-actions { flex-direction: column; }
+}
